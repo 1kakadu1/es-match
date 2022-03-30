@@ -1,0 +1,1460 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$width: 50;
+$height: 50;
+$size:25;
+
+@mixin img_fon($i,$img,$type)
+{
+  .msi-#{$i}{
+    width: 378px;
+    height: 240px;
+    background: url(../img/#{$img}.#{$type}) no-repeat;
+    position: relative;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-top: 20px;
+    border: 1px solid #1d222e;
+            }
+}
+
+@mixin FontFace($name,$name_url,$type:ttf){
+
+@font-face {
+	font-family: $name; /* Name font-family */
+	src: url(../fonts/#{$name_url}.#{$type}); /* url */
+			}
+}
+
+
+@mixin p_size_inc($i,$size-t,$ff,$color){
+	  .p-size-#{$i}{
+	  font-size:$size-t +px;
+		font-family: $ff;
+		color:$color;
+
+				}
+}
+
+@mixin Hover_images($i,$obj,$name,$type:png){
+  .demoizo-#{$i}{display: block;}
+
+  .demoizo-#{$i}:hover, .demoizo-#{$i}:focus, .demoizo-#{$i}:active {
+   background: url(../#{$obj}/#{$name}.#{$type}) no-repeat;
+   }
+
+    .demoizo-#{$i}:hover img, .demoizo-#{$i}:focus img, .demoizo-#{$i}:active img  {
+    background: transparent;
+     visibility: hidden;
+   }
+
+
+}
+
+
+
+
+
+@include FontFace(OswM,Oswald-Medium,$type:ttf)
+@include FontFace(OswR,Oswald-Regular,$type:ttf)
+@include FontFace(OswD,Oswald-DemiBold,$type:ttf)
+@include FontFace(OswB,Oswald-Bold,$type:ttf)
+@include FontFace(OswL,Oswald-Light,$type:ttf)
+@include FontFace(ArialRegular,ArialRegular,$type:ttf)
+
+body {background-image: url(../img/bg.png); /* Путь к фоновому изображению */
+      background-color: #1d222e; /* Цвет фона */
+     }
+
+
+header {
+background-color:#16191f;
+.navbar-right>li>a{font-family:OswM;
+                   font-size:18px;
+                   color:#8b94a6;
+                   padding-top: 6px;
+                   padding-bottom: 6px;
+                   padding-right: 30px;
+                   padding-left: 30px;
+                   -webkit-border-radius: 50px;
+                   border-radius: 50px;
+                  }
+
+.navbar-right>li>a:hover {
+    background: #e30303; /* Цвет фона под ссылкой */ 
+    color: #fefeff; /* Цвет ссылки */ 
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+                         }
+
+.navbar-right>li>a:visited {
+    background: #e30303; /* Цвет фона под ссылкой */ 
+    color: #fefeff; /* Цвет ссылки */ 
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+                         }
+
+.nav {margin-top: 10px;}
+
+.navbar {margin-bottom: 0px;}
+
+// ul li:nth-child(4){ border-radius: 20px;
+ //      border: 3px solid #fc0909;
+ //    }
+.menu2 {background-color: #282f3d;}
+
+.popover{background:#282f3d;border-radius: 6px;}
+
+.popover.bottom {
+    margin-top: 10px;
+    width: 230px;
+    height: 395px;
+}
+
+.social_min{ 
+            width: 190px;
+            height: 116px;
+            border-bottom: 1px solid #7a8395;
+
+            img { margin-right: 9px;
+                  margin-top: 10px;
+                 }
+
+              img:hover {opacity: 1;
+
+                           /*отражение*/
+                         // -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(.7, transparent), to(rgba(0,0,0,0.4)));
+                          border-radius:14px;
+                           /*свечение*/
+                          -webkit-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+                          -moz-box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+                          box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
+                        }   
+
+              p{color: #858da0;font-family:OswL;font-size:15px;}    
+            }
+
+
+form {
+      
+      margin-top:5px;  
+        
+      label{color: #858da0;font-family:OswL;font-size:15px;} 
+
+      .form-group  input{background-color:#1d222e;border-radius:6px;border:1px solid #1d222e;color:#fff;font-size:15px;font-family:OswL;} 
+
+      a span{font-family:OswR;font-size:15px;color:#077ae1}
+
+      .label1{font-family:OswL;font-size:15px;padding-left: 8px;}
+
+      .checkbox1 label{margin-top:5px;}  
+
+            /* Скрываем реальный чекбокс */
+      .checkbox {display: none;}
+       
+      /* Задаем внешний вид для нашего кастомного чекбокса. Все обязательные свойства прокомментированы, остальные же свойства меняйте по вашему усмотрению */
+      .checkbox-custom {
+          position: relative;      /* Обязательно задаем, чтобы мы могли абсолютным образом позиционировать псевдоэлемент внютри нашего кастомного чекбокса */
+          width: 20px;             /* Обязательно задаем ширину */
+          height: 20px;            /* Обязательно задаем высоту */
+         // border: 2px solid #ccc;
+          border-radius: 3px;
+          background: #1d222e;
+                        }
+       
+      /* Кастомный чекбокс и лейбл центрируем по вертикали. Если вам это не требуется, то вы можете убрать свойство vertical-align: middle из данного правила, но свойство display: inline-block обязательно должно быть */
+      .checkbox-custom,.label {
+          display: inline-block;
+          vertical-align: middle;
+          color:#fff;
+                              }
+       
+      /* Если реальный чекбокс у нас отмечен, то тогда добавляем данный признак и к нашему кастомному чекбоксу  */
+      .checkbox:checked + .checkbox-custom::before {
+          content: '\2714';             /* Добавляем наш псевдоэлемент */
+          display: block;          /* Делаем его блочным элементом */
+          position: absolute;      /* Позиционируем его абсолютным образом */
+       
+          /* Задаем расстояние от верхней, правой, нижней и левой границы */
+          top: 2px;
+          right: 2px;
+          bottom: 2px;
+          left: 2px;
+       
+          background: #1d222e;     /* Добавляем фон. Если требуется, можете поставить сюда картинку в виде "галочки", которая будет символизировать, что чекбокс отмечен */
+          border-radius: 2px;
+                                                  }
+
+      button{ border-radius:18px!important;
+              background: #e30303;
+              background-color: #e30303;
+              margin-left: 4px;
+              margin-top: 8px;
+              font-family: OswM;
+              width: 95px;
+              height: 35px;
+              color: #fff;}
+
+      button:hover{ border-radius:18px!important;
+                    background: #b00202;
+                    background-color: #b00202;
+                    font-family: OswM;
+                    color: #fff;
+                  }
+
+
+     }
+
+}
+
+.menu2{
+
+  .m-mar-l{margin-left: -21px;}
+
+  .nav {margin-top: 0px;}
+
+     @include p_size_inc(1,15,OswR,#ffffff)
+     @include p_size_inc(2,15,OswR,red)
+
+    .navbar-nav>li>.dropdown-menu{background:#282f3d;}
+  
+    .navbar-nav>li:nth-child(6)>a {
+            font-family:OswM;
+            color:#8b94a6;
+                                }
+
+    .nav>li>a:hover {
+        background: #16191f; /* Цвет фона под ссылкой */ 
+        color: #fefeff; /* Цвет ссылки */ 
+                    }
+
+    .nav>li>a:visited {
+        background: #16191f; /* Цвет фона под ссылкой */ 
+        color: #fefeff; /* Цвет ссылки */ 
+                    }
+
+    .navbar-right>li>a{
+              font-size:15px;
+              color:#606a7f!important;
+              margin-top:7px
+
+                              } 
+
+     .navbar-right>li>a:hover {
+                font-size: 15px;
+                color: #e30303!important;
+                text-transform: uppercase;
+                text-shadow: #e30303 0 0 20px;
+                    } 
+
+    .bordr_r{border-right: 3px solid #3c424f;height:53px;}
+
+    img{height:24px;padding-right: 4px;}
+
+.p-size-1{padding-left:4px;}
+                                      
+      }
+
+.navbar-toggle {border: 1px solid #d32e19 !important;
+                .icon-bar { background: #f40808!important;}
+               }
+
+main {
+
+  .event{margin-top: 22px;
+
+  @include p_size_inc(3,18,OswD,#ffffff)
+
+    input{background-color:#323a4a;width:100%;height:35px;border-color:#323a4a}
+
+
+    button{ border-radius: 0px;
+            background-color: #16191f;
+            height:35px}
+
+
+    i{color:#969fb3;}
+
+    hr {
+        width: 52px;
+        margin-top: 10px;
+        border-top: 2px solid #eee;
+        margin-right: 210px;
+
+       }
+
+
+    @include img_fon(1,msi-1,jpg)
+
+    @include img_fon(2,msi-2,png)
+
+    @include img_fon(3,msi-3,png)
+
+
+    .msi-bot  {
+    background-color: rgba(32, 36, 43, 0.92);
+    height: 58px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.msi-1:hover{ border: 1px solid red;}
+.msi-2:hover{ border: 1px solid red;}
+.msi-3:hover{ border: 1px solid red;}
+
+
+
+
+    h3{color:red; text-transform: uppercase;font-family:OswB;}
+
+    span{color:#fff;font-family:OswR;padding-left: 4px;}
+
+    h5 {color:#fff;text-transform: uppercase;font-family:OswB;padding-left: 4px;}
+
+    .col-xs-4 {    border-left: 1px solid #3c424f;}
+
+        }
+
+
+.table
+      {
+          
+          .container .row {
+            .col-md-9{width: 79.06%;}
+            .col-md-3{ width: 20.9%;}
+                          }
+
+          .small_popover{
+                          .span-text{font-size:17px;font-family:"OswD";color:black;}
+                          .span-text1{font-family:"OswR";color:#969fb3;}
+                        }
+
+
+          .tournament{width: 26%;//32.5%;    
+                      display: inline-block;
+                      text-align: center;}
+
+          .discipline{width: 16%;//17.4%;
+                      display: inline-block;
+                      text-align: center;}
+
+          .region{width: 17%;
+                  display: inline-block;
+                  text-align: center;}
+
+          .prize{width:7%; //6.3%;
+                 display: inline-block;
+                 text-align: center;
+                 //margin-left: 60px;
+               }
+
+          .area {
+                  display: inline-block;
+                  text-align: center;
+                  width: 16%;}
+
+          .date {
+                   display: inline-block;
+                   width: 12%;}
+
+          .header-st{
+                     font-family: "OswR";
+                     color: #969fb3;
+                     max-height: 50px;
+                     height: 50px;
+                     background: #323a4a;
+                     margin-left: 0;
+                     padding-top: 13px;
+                     font-size: 15px;
+                     width: 100%;
+                     margin-top: 25px;
+                     border-bottom: 1px solid #82899b;
+                    }
+
+          .col-md-9 {
+
+          h2{ 
+              font-size: 18px;
+              color: #fff;
+              font-family: "OswD";
+                
+                span{color:#ff2828;}
+            }
+
+            hr {
+                  width: 52px;
+                  border-top: 2px solid #eee;
+                  position: absolute;
+                  left: 16px;
+                  top: 30px;
+                }
+
+                    }
+
+
+             .line {             
+                      border-bottom: 1px solid #82899b;
+                      padding-left: 0;
+                      padding-right: 0;
+                      margin-left: 15px;
+                      width: 96.8%;
+                      padding-top: 0px;
+                      padding-bottom: 0px;
+                      background: #282f3d;
+                    }
+              .line:hover{background: #323a4a;}      
+
+              .bg-line{background: url(../img/bg1.png);}
+
+              .row .line{
+
+                .tournament-tab{
+                      width: 29%;//32.5%;    
+                      display: inline-block;
+                      //text-align: center;
+                      a{ 
+                        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+                       } 
+
+                       img{width:96px;height:46px;}
+
+                       #red {color:red}
+/*
+                       .demoizo {
+                          display: block;
+                                 }
+
+                      .demoizo:hover, .demoizo:focus, .demoizo:active {
+                           background: url(../img/ListGame/11.png) no-repeat;
+                                                                      }
+
+                        .demoizo:hover img, .demoizo:focus img, .demoizo:active img  {
+                          background: transparent;
+                          visibility: hidden;
+  }                         
+*/
+
+                     @include Hover_images(1,img/ListGame,11)
+                      @include Hover_images(2,img/ListGame,12)   
+                       @include Hover_images(3,img/ListGame,13)   
+                        @include Hover_images(4,img/ListGame,14)   
+                         @include Hover_images(5,img/ListGame,15)   
+                          @include Hover_images(6,img/ListGame,16)   
+                           @include Hover_images(7,img/ListGame,17)   
+                                                                       
+
+                      span{font-size:13px;
+                           font-family:"OswB";
+                            color: #FFF;
+                            padding-left:15px;
+                            text-transform: uppercase;
+                            }
+
+                                }
+
+                .discipline-tab{
+                       width: 19%;
+                       display: inline-block;
+
+                       span{
+                           font-size:14px;
+                           font-family:"OswR";
+                           color: #969fb3;
+                           padding-left:5px;
+                            }
+                                }
+
+                  .region-tab{
+
+                              width: 12%;
+                              display: inline-block;
+                              color:#969fb3;
+                              font-size:14px; 
+                              font-family:"OswR"; 
+                              //text-align: center;
+                              padding-left: 10px;
+                             }
+
+                  .prize-tab{
+                             width: 7%;
+                              display: inline-block;
+                              color:#FFF;
+                              font-size:14px; 
+                              font-family:"OswB"; 
+                            }
+
+                  .area-tab{
+                              width: 12%;
+                              display: inline-block;
+                              
+
+                            span{color:#969fb3;
+                                 font-size:14px; 
+                                 font-family:"OswR"; 
+                              //text-align: center;
+                                 margin-left: 30px;}
+                            }
+
+                  .date-tab{
+                              width: 15%;
+                              display: inline-block;
+                              text-align: center;
+                              margin-left: 7px;
+                              /* margin-top: 10px; */
+                              padding-top: 7px;
+                              height: 50px;
+                              vertical-align: middle;
+
+                            .mg-top{margin-top:10px;}
+                              
+                            p{margin: 0 0 0px;
+                              color:#fff;
+                              font-size:14px;
+                              font-family:"OswR";
+                              margin-bottom: -5px;
+                                  
+                                  #green,#red,#none  {
+                                  font-size:14px;
+                                  font-family:"OswR"; 
+                                  border: none;
+                                  box-shadow: none;
+                                  background: none;
+                                  border-radius: none;
+                                  padding-right: none;
+                                  padding-left: none;}
+
+                                  #green{color:green;}
+
+                                  #red {color:red}
+
+                                  #none{color:#fff;padding-left:0px;padding-right:0px}
+
+                            }
+
+                            span{ color:#fff;
+                                  font-size:11px; 
+                                  font-family: "ArialRegular";
+                                  border: 1px solid red;
+                                  box-shadow: rgb(227, 3, 3) 0px 0px 15px;
+                                  background: rgb(227, 3, 3);
+                                  border-radius: 5px;
+                                  padding-right: 4px;
+                                  padding-left: 4px;
+                                  //background-color: red;
+                                }
+
+                            }
+
+
+                    .col-md-offset ul ol{display: inline;}
+              } 
+
+            ul {margin-top:20px}
+
+            ul  .list-pagination{display:inline;
+                                  margin-left:20px;
+                                  font-size: 16px;
+                                  font-family:"OswB" ;
+                                  color:#969fb3;
+
+                                  a{color:#969fb3}
+
+                                  a:hover{
+                                    border-radius:50px;
+                                    padding: 3px 7px 2px 9px;
+                                    font-size: 16px;
+                                    font-family:"OswB" ;
+                                    border:1px solid #48556e;
+                                    background-color:#48556e;
+                                    color:#fff;
+                                  }
+                                }
+
+            //#rates {
+            .col-md-3{
+
+                padding-right: 0;
+                padding-left: 0;
+
+                input{background-color:#1d222e;border:0;color:#8e98ac;}
+
+                button,#datetimepicker1 span,#datetimepicker2 span{background:#48556e;border-color:#48556e;}
+                
+                .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+                  background:#48556e;border-color:#48556e;}
+
+                .caret{color:#8e98ac;}
+
+                i{color:#8e98ac;}
+
+
+
+                hr {
+                    width: 52px;
+                    border-top: 2px solid #eee;
+                    /* position: absolute; */
+                    /* left: 16px; */
+                    /* top: 30px; */
+                    margin-left: 3px;
+                    margin-top: 0;
+                    }
+                                  
+                h2{font-size:18px;
+                font-family: "OswD";
+                color: #fff}
+
+                a{float:right;
+                  margin-top: 20px;
+                  margin-bottom: 10px;
+                  font-size:15px;
+                  font-family:"OswR";
+                  text-decoration: underline;
+                 }
+
+
+                 .bg-rates{background-color:#282f3d;
+                           margin-top:-7px;
+                           height:100%;}
+
+                  ul {margin-top:0;}
+
+                  #datetimepicker2,#datetimepicker1{width: 92px;}
+
+                  .date-group{
+                         
+                    display: inline-flex;
+                    display: -webkit-inline-box;
+                    display: -webkit-inline-flex;
+                    display: -ms-inline-flexbox;}
+
+                  h4{font-size:17px;color:#969fb3;font-family:"OswD";}
+
+                  .mag-top{margin-top:35px;}
+                  .mag-bottom{margin-bottom:50px;}
+
+                .type  ul {
+                        background-color: #282f3d;
+                        li a{ background-color:#282f3d;
+                              float:none;text-decoration:blink;
+                              color:#8b93a6;
+
+                                img{padding-right: 12px;}
+                            }
+
+                     }
+
+                     .dropdown-menu>li>a:hover {
+                        background-color: #e8e8e8;
+                        background-image: -webkit-linear-gradient(top,#1d222e 0,#1d222e 100%);
+                        background-image: -o-linear-gradient(top,#1d222e 0,#1d222e 100%);
+                        background-image: -webkit-gradient(linear,left top,left bottom,from(#1d222e),to(#1d222e));
+                        background-image: linear-gradient(to bottom,#1d222e 0,#1d222e 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1d222e', endColorstr='#1d222e', GradientType=0);
+                        background-repeat: repeat-x;
+                                                }
+/*
+                  .new-select-style-wpandyou select {
+                    border-radius: 0;
+                    background: transparent;
+                    height: 34px;
+                    padding: 5px;
+                    border: 0;
+                    font-size: 16px;
+                    line-height: 1;
+                    -webkit-appearance: none;
+                    width: 268px;
+                   }
+
+                  .new-select-style-wpandyou {
+                      border: 1px solid #CCC;
+                      overflow: hidden; 
+                      height: 34px;
+                      background: url(http://wpandyou.ru/wp-content/uploads/2013/01/down_arrow_select.jpg) no-repeat right #DDD;
+                      width: 240px;
+                     }
+
+
+
+*/
+
+                .col-md-12 .not img{width: 100%;}
+
+                #price,#price2 {
+                   border:1px solid #074776;
+                   padding:5px;
+                   width:100%;
+                  }
+                #options {
+                   width:100%;
+                  }
+                #slider_price {
+                   margin-top:10px; 
+                  } 
+
+                form span{font-size:17px;color:#969fb3;font-family:"OswD";} 
+                
+                form label {
+                    width: 42%;
+                  }
+                form label input {
+                    width: 100%;
+                    background-color: #1d222e;
+                    border: none;
+                    -webkit-border-radius: 4px;
+                            border-radius: 4px;
+                    height: 34px;
+                    color: #fff;
+                    padding-left: 5px;
+                  }
+                #slider_price {
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                  }
+                #slider_price span {
+                    background: #48556e;
+                    -webkit-border-radius: 50px;
+                            border-radius: 50px;
+                    border: none;
+                  }
+                .ui-widget-header {
+                    background: #48556e;
+                  }
+                .ui-widget-content {
+                    background: #1d222e;
+                    border: 1px solid #48556e;
+                  }
+                .ui-widget.ui-widget-content {
+                    border: 1px solid #48556e;
+                  }
+              }
+                  // }
+
+      }
+
+.history {
+            height: 270px;
+
+    .container-bg{background-color:#282f3d;
+                  height: 270px;
+                 }
+
+    .img-width{width:20%;   
+               display: inline-block;
+               height: 205px;
+               width: 195px;
+              }
+
+                 
+
+    .info-width{
+      width:80%;   
+      display: inline-block;
+
+                }
+
+    h3{font-family:"OswM";
+       text-transform: uppercase;
+       color: #fff;
+     }
+
+    p{font-family:"Arial";
+      font-size:15px;
+      color: #727a8b;
+      }
+
+
+@media screen and (min-width:992px){
+    .col-md-5 {
+        width: 31.666667%;}
+
+    .col-md-7 {width: 64.333333%;}
+
+                                  }
+
+    .container-bg .col-md-12,.col-md-7{padding-right:0;padding-left:0;}
+
+    .container-bg  img {margin-top:20px;}
+
+    .container-bg a {float: right;
+                     text-decoration: underline;
+                     font-size: 15px;
+                     font-family:"Arial"}
+
+    .container-bg ul  .list-pagination{
+                  display:inline;
+                  margin-left:20px;
+                  font-size: 16px;
+                  font-family:"OswB" ;
+                  color:#969fb3;
+
+                   a{color:#969fb3;
+                     float:none;
+                     text-decoration: none;
+                     font-size: 16px;
+                     font-family:"OswB" ;}
+
+                    a:hover{
+                      border-radius:50px;
+                      padding: 3px 7px 2px 9px;
+                      font-size: 16px;
+                      font-family:"OswB" ;
+                      border:1px solid #48556e;
+                      background-color:#48556e;
+                       color:#fff;
+                            }
+                                }
+
+    .container-bg .block-pagination {   
+                          position: relative;
+                          top: 34px;
+                          left: 190px;}
+                        }
+
+.match{
+        margin-top: 20px;
+
+        .tournament-tab1{width: 26%;    
+                         display: inline-block;
+                         
+                         span{margin-left:5px;
+                              text-transform: uppercase;
+                              font-size: 14px;
+                              font-family: "OswB"
+                              }
+                        }
+
+        .game-info{width: 19%; 
+                   text-align: center;  
+                   display: inline-block;
+                   span{margin-left:5px;
+                        color:#969fb3;
+                        font-size: 14px;
+                        font-family: "OswR"
+                       }
+                  }
+
+        .pvp{width: 36%;    
+             display: inline-block;
+             vertical-align: middle;
+             
+              .st,.st1{font-size: 14px;
+                  font-family: "OswR"
+                  }          
+              img{margin-left:5px;}
+
+              .st{margin-left:5px;color:#7f8799;}
+            }
+
+        .date-game{width: 11%;;    
+                   display: inline-block;
+
+                   .st2{
+                        display: inline-block;
+                        color: #69ee82;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        font-family: "OswR"
+
+                       }
+                  }
+        .watch{width: 6%;   
+               display: inline-block;
+
+               img{margin-left: 6px;}
+
+               .st3{
+                    color: #6b7384;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-family: "OswR"
+                   }
+              } 
+        
+        p,span{color:#fff;
+              font-family:"OswD";
+              font-size:18px;//0.9375vmax;
+              }
+
+        .img-left{margin-left:21px;}
+
+        #img_p {img{padding-left:5px;}
+                //span{border-bottom: 1px solid #471418;height:53px;}
+                hr {
+                      width: 45px;
+                      border-top: 2px solid #eee;
+
+                      position: absolute;
+                      left: 0px;
+                      top: 6px;
+                    }
+
+                p{margin-top:27px;}
+
+                a{ font-family:"OswD";
+                                      font-size:18px;
+                                      float:right;
+                                      padding-right:20px;
+                                      color:#777e90
+                                    }
+
+                a:hover{color:#e30303;}
+
+               }
+#not-pad .col-md-12{padding-left:0;padding-right:0}
+
+        .bg-line-g{background:#282f3d;
+                   height:48px;
+                   border-bottom: 1px solid #48556e;
+                  }
+
+      #future {
+        margin-bottom:65px;
+          .pvp{width: 33%;}
+          .date-game{width: 14%;
+                     .st2{color:#969fb3;}
+                    }
+          .watch{width: 6%;}
+              }
+
+      }
+
+}
+
+
+footer {
+  background:#16191f;
+  width:100%;
+  height:253px;
+
+  .col-md-12{margin-top:26px;}
+
+  .col-md-6,.col-xs-6,.col-ms-6{
+
+    padding-right: 0;
+    padding-left: 20px;
+
+      a{color:#fff;
+        text-transform: uppercase;
+        font-size:18px ;
+        font-family:"OswM"; 
+       }
+
+       .pad-left{margin-left:24px;}
+
+       .href-border{
+          border: 1px solid #e30303;
+          border-radius: 20px;
+          background: #e30303;
+          color: #fff;
+          padding: 5px 35px;
+       }
+
+      a:nth-child(2) {padding: 5px 15px;}
+
+       .href-border:hover{background: #16191f;
+                          text-decoration: none; /* Отменяем подчеркивание у ссылки */
+                         }
+
+
+       
+
+  }
+
+ .menu-footer .container .row .socico{
+
+div {border-bottom: 1px solid #471418;height:53px;}
+        .mg-left{margin-left:20px;}
+
+        a{
+          font-size: 18px;
+          font-family: "OswM";
+          color: #fff;
+          text-decoration: none;
+           img{margin-left:12px}
+         }
+        
+              
+                                        }
+.menu-footer .container .row .serv{
+    
+    .col-md-10{ 
+                color: #d21818;
+                width: 89%;
+                padding-left:0px;
+                padding-right:0px;
+
+                  h1{font-size:17px;
+                    text-transform: uppercase;
+                    }
+
+                  p{font-size:12px;
+                    margin: -9px 0 10px;
+                    }
+              }
+
+      .col-md-1{
+                width: 11%;
+                padding-left:0px;
+                padding-right:0px;
+
+                  img{height: 66px;
+                      width: 109px;
+                      margin-top: 21px;
+                     }
+                }
+
+                                    }
+
+.menu-footer .container .row .col-xs-12{
+font-size:10px;
+color:red;
+font-family:"Arial";
+margin:0 auto;
+//text-align: center;
+
+                                    }
+
+        }
+
+body header .popover.bottom > .arrow:after {
+    border-bottom-color: #282f3d;
+}
+
+
+@media(max-width:1200px)
+{
+  main  .msi-1,.msi-2,.msi-3{margin: 0 auto;}
+
+  main .table .header-st {font-size: 12px;width: 100.6%;}
+
+  main .table .row .line .tournament-tab img {
+    width: 80px;
+    height: 40px;
+                                             }
+
+  main .table .row .line .tournament-tab span {
+    font-size: 9px;
+                                              }
+
+  main .table .row .line .discipline-tab span {
+    font-size: 10px;
+                                              }
+
+  main .table .row .line .region-tab {
+    font-size: 11px;
+                                     }
+
+  main .table .row .line .prize-tab  {
+    font-size: 9px;
+                                      }
+
+  main .table .row .line .area-tab span {
+    font-size: 10px;
+                                        }
+
+  main .table .row .line .date-tab span {
+    font-size: 7px;
+                                        }
+
+  main .table .row .line .date-tab p {
+    font-size: 10px;
+                                      }
+
+  main .table .row .line .date-tab p #green, main .table .row .line .date-tab p #red, main .table .row .line .date-tab p #none {
+    font-size: 9px;
+                  }
+
+  main .table ul .list-pagination {
+    margin-left: 13px;
+    font-size: 9px;
+                                  }
+
+  .m-h3 {
+    font-size: 12px;
+          }
+
+  main .history p {
+    font-size: 13px;
+                  }
+
+  .m-img{width: 100%;}
+
+  main .history .container-bg .block-pagination {
+    position: relative;
+    top: 34px;
+    left: 34px;
+                                                }
+
+  .img-width img{width: 80%;}
+
+  main .history .img-width {
+    display: inline-block;
+    height: 205px;
+    width: 171px;
+                            }
+
+  main .table .col-md-3 .date-group {
+    display: inline-block; 
+    display: -webkit-box; 
+    display: block;
+    display: -ms-inline-flexbox;
+
+                                     }
+
+  main .table .col-md-3 #datetimepicker2, main .table .col-md-3 #datetimepicker1 {width: 100%;}
+
+  main .table .col-md-3 #datetimepicker1 {margin-bottom: 10px;}
+
+  footer .col-md-6 .pad-left, footer .col-xs-6 .pad-left, footer .col-ms-6 .pad-left {
+    margin-left: 0px;
+}
+
+footer .col-md-6 .href-border, footer .col-xs-6 .href-border, footer .col-ms-6 .href-border {
+    padding: 5px 13px;
+}
+
+}
+
+@media(max-width:992px)
+{
+   
+   main .table .container .row .col-md-9 {
+    width: 100%;
+                                         } 
+
+   main .event hr { margin-left: 0;}
+
+   main .table .col-md-9 hr {
+    position: absolute;
+    left: 16px;
+    top: 3px;
+                            }
+
+    main .history p {
+    font-size: 14px;
+    padding-right: 37px;
+                    }
+
+    .m-pag{margin-right:36px;}
+
+    main .match .tournament-tab1 {
+    width: 18%;
+    display: inline-block;
+                                 }
+
+    main .match .watch {
+    width: 10%;
+    display: inline-block;
+                        }
+
+    main .match #future .watch {width: 10%;}
+
+    main .match .tournament-tab1 span {font-size: 11px;}
+
+    main .match .game-info span {font-size: 11px;}
+
+    main .match .pvp .st, main .match .pvp .st1 {font-size: 11px;}
+
+    main .match .pvp img {
+    margin-left: 5px;
+    width: 32px;
+    height: 25px;
+                          }
+
+    main .match .date-game .st2 {font-size: 11px;}
+
+    main .match #not-pad .col-md-12 {padding-top: 10px;}
+
+    main .table .col-md-3 {
+    padding-right: 0;
+    padding-left: 18px;
+    /* margin-left: 22px; */
+                          }
+
+    main .table .container .row .col-md-3 {
+    width: 100%;
+                                          }
+
+    main .history .container-bg {
+    background-color: #282f3d;
+    height: 270px;
+   /* margin-left: 130px; */
+                                }
+
+
+    main .table .col-md-3 h4:nth-child(1) {padding-top:20px;}
+
+    footer .col-md-6 a:nth-child(2), footer .col-xs-6 a:nth-child(2), footer .col-ms-6 a:nth-child(2) {
+    padding: 2px 9px;
+                                                                                                      }
+
+    footer .col-md-6 .href-border, footer .col-xs-6 .href-border, footer .col-ms-6 .href-border {
+    padding: 2px 8px;
+                                                                                                }
+
+    footer .col-md-6 a, footer .col-xs-6 a, footer .col-ms-6 a {font-size: 12px;}
+
+    footer .menu-footer .container .row .socico a {font-size: 13px;}
+
+    footer .menu-footer .container .row .serv .col-md-10 h1 {font-size: 12px;}
+
+    footer .menu-footer .container .row .serv .col-md-10 p {font-size: 9px;}
+
+    footer .menu-footer .container .row .serv .col-md-1 img {
+    height: 66px;
+    width: 82px;
+    margin-top: 21px;
+                                                            }
+}
+
+@media(max-width:768px)
+{
+
+    main .event {width: 126%;}
+
+    main .table {margin-left: 88px;}
+
+    //main .history {width: 115%;margin-left: 40px;}
+
+    footer .menu-footer .container .row .col-xs-12 {text-align:center;margin-bottom: 10px;}
+
+    footer .socico {text-align: center;}
+
+    main .table .row .line .discipline-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+   
+    main .table .row .line  .tournament-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+   
+    main .table .row .line  .region-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+   
+    main .table .row .line  .prize-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+   
+    main .table .row .line  .area-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+    
+    main .table .row .line  .date-tab{display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;}
+
+     main .table .row .line .tournament-tab span {
+    font-size: 15px;
+                                              }
+
+  main .table .row .line .discipline-tab span {
+    font-size: 14px;
+                                              }
+
+  main .table .row .line .region-tab {
+    font-size: 12px;
+                                     }
+
+  main .table .row .line .prize-tab  {
+    font-size: 13px;
+    padding-left: 10px;
+                                      }
+
+  main .table .row .line .area-tab span {
+    font-size: 14px;
+    padding-right: 19px;
+                                        }
+
+  main .table .row .line .date-tab span {
+    font-size: 12px;
+                                        }
+
+  main .table .row .line .date-tab p {
+    font-size: 11px;
+      margin-bottom: 0px;
+                                      }
+
+  main .table .row .line .date-tab p #green, main .table .row .line .date-tab p #red, main .table .row .line .date-tab p #none {
+    font-size: 16px;
+
+                  }
+
+  main .match .tournament-tab1 {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  main .match .game-info {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  main .match .pvp {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  main .match .date-game {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  main .match .watch {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;
+      margin-bottom: 8px;
+  }
+
+  main .match .bg-line-g {
+    height:100%;
+}
+
+  main .match .pvp img {
+    width: 55px;
+    height: 55px;
+                       }
+
+  main .match .tournament-tab1 span {font-size: 16px;}
+
+  main .match .game-info span {font-size: 14px;}
+
+  main .match .date-game .st2 {font-size: 19px;}
+
+  main  .match .pvp .st, main .match .pvp .st1 {font-size: 16px;}
+
+  main .match .watch img {margin-top: -5px;}
+
+  main .match .watch .st3 {font-size: 17px;}
+
+  main .match #future .pvp {
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;}
+
+  main .match #future .pvp {     
+      width: 50%;
+      text-align: center;
+      margin:0 auto;
+      display: block;}
+
+ // main .table .header-st {
+ //   font-size: 12px;
+ //   width: 103.6%;
+  //                      }
+
+  //.table{width: 124%!important;max-width: 124%!important;margin-left: 21px;}
+
+  //.match,.history{margin-left:29px;width: 120%;}
+
+  main .match #img_p hr {
+    position: absolute;
+    left: 0px;
+    top: 17px;
+                        }
+
+  footer {
+    width: 126%;
+    height: 100%;
+         }
+
+  header { width: 126%;}
+
+  main .history,.match{margin-left: 101px;margin-right: -83px;}
+
+  .menu2 .m-mar-l {margin-left: 0px;}
+}
+
+
+@media(max-width:598px)
+{
+
+
+main .history{
+
+      height: 510px;
+
+      .container-bg {height: 100%;}
+
+      .col-xs-3 {width: 45%;
+                 float: none;
+                 margin: 0 auto;
+                }
+      .col-xs-9-w{width: 100%;}
+
+         } 
+
+      .m-h3 {padding-left: 20px;}
+
+main .history p {
+    padding-right: 20px;
+    padding-left: 20px;
+                }
+
+main .match #img_p a {
+
+    font-size: 13px;
+    padding-right: 6px;
+
+                      }
+
+main .match .pvp .st1 {font-size: 12px;}
+
+main .match .pvp img {
+    width: 35px;
+    height: 35px;
+                      }
+
+}
+
+@media(max-width:598px)
+{
+
+footer .menu-footer  .container .row .serv .col-md-1 img {
+    height: 50px;
+    width: 50px;
+    margin-top: 21px;
+}
+
+}
+
+@media(max-width:548px)
+{
+     main .history,.match{margin-left: 72px;margin-right: -50px;}
+
+     main .table {margin-left: 55px;}
+}
+
+
+@media(max-width:548px)
+{
+     main .history,.match{    margin-left: 52px;margin-right: -39px;}
+
+     main .table {margin-left: 36px;}
+}
+
